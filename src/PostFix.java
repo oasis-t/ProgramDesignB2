@@ -2,6 +2,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import  java.util.Scanner;
 
+//输入的中缀表达式转成后缀表达式并返回计算结果
 public class PostFix {
     //用于记录操作符
     private static LinkedList<String> operators=new LinkedList<>();
@@ -10,7 +11,6 @@ public class PostFix {
     //用于展示后缀表达式
     private static StringBuilder sb=new StringBuilder();
 
-//    static  int result = 0;
 
     public static int getResult() {
         LinkedList<String> list=new LinkedList<>();
