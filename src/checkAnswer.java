@@ -12,7 +12,7 @@ public class checkAnswer {
             "+", "-", "*", "/"
     };
 
-    public static void checkAnswer() {
+    public static boolean checkAnswer() {
 
 
 //        double[] array = new double[4];
@@ -41,7 +41,7 @@ public class checkAnswer {
         }*/
 
         System.out.println(String.format("你输入的4个1-10的整数为%s,%s,%s,%s",array[0],array[1],array[2],array[3]));
-        System.out.println("结果如下：");
+//        System.out.println("结果如下：");
 
         List<double[]> resultAllList = new ArrayList<>();
         List<double[]> list = new ArrayList<>();
@@ -57,23 +57,20 @@ public class checkAnswer {
         Iterator<double[]> iterator = resultAllList.iterator();
         while (iterator.hasNext()) {
             double[] tempArray = iterator.next();
-            sum += caculate24Point(tempArray);
-            sum += caculate24Point2(tempArray);
+            sum += calculate24Point(tempArray);
+            sum += calculate24Point2(tempArray);
         }
 
         System.out.println("总共方案数量：" + sum);
-        /*if(sum!= 0){
+        if(sum!= 0){
             isFlag = true;
         }
-        return isFlag;*/
+        return isFlag;
     }
 
 
     /**
      * 获取array的所有可能组合
-     *
-     * @param list
-     * @param array
      */
     public static void getAllArray(List<double[]> list, double[] array) {
         if (!exists(list, array)) {
@@ -95,10 +92,6 @@ public class checkAnswer {
 
     /**
      * 获取array下标遇到i的位置左右组合
-     *
-     * @param array
-     * @param i
-     * @return
      */
     public static List<double[]> getArrayList(double[] array, int i) {
         List<double[]> list = new ArrayList<>();
@@ -116,10 +109,6 @@ public class checkAnswer {
 
     /**
      * array是否存啊在list中
-     *
-     * @param list
-     * @param array
-     * @return
      */
     public static boolean exists(List<double[]> list, double[] array) {
         Iterator<double[]> iterator = list.iterator();
@@ -135,10 +124,8 @@ public class checkAnswer {
     /**
      * 计算array能算24点的所有组合，从左到右的顺序
      *
-     * @param
-     * @throws Exception
      */
-    public static int caculate24Point(double[] array)  {
+    public static int calculate24Point(double[] array)  {
         int count = 0;
         /*if (array.length != 4) {
             throw new Exception("不是四个数");
@@ -169,7 +156,7 @@ public class checkAnswer {
 
                     if (result2 == 24.0d) {
                         count++;
-                        System.out.println(String.format("方案：%s=%s", expressionStr3, result2));
+//                        System.out.println(String.format("方案：%s=%s", expressionStr3, result2));
                     }
                 }
             }
@@ -180,11 +167,8 @@ public class checkAnswer {
     /**
      * 计算array能算24点的所有组合 ,两两组合
      *
-     * @param array
-     * @return
-     * @throws Exception
      */
-    public static int caculate24Point2(double[] array)  {
+    public static int calculate24Point2(double[] array)  {
         int count = 0;
         /*if (array.length != 4) {
             throw new Exception("不是四个数");
@@ -208,7 +192,7 @@ public class checkAnswer {
                     String expressionStr3 = String.format("%s %s %s", expressionStr1, op3, expressionStr2);
                     if (result3 == 24.0d) {
                         count++;
-                        System.out.println(String.format("方案： %s = %s", expressionStr3, result3));
+//                        System.out.println(String.format("方案： %s = %s", expressionStr3, result3));
                     }
                 }
             }
@@ -220,8 +204,6 @@ public class checkAnswer {
 
     /**
      * 是否为合法的计算结果
-     * @param result
-     * @return
      */
     public  static  boolean isValidResult(double result){
         if (result<1)

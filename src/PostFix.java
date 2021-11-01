@@ -15,10 +15,10 @@ public class PostFix {
     public static int getResult() {
         LinkedList<String> list=new LinkedList<>();
         Scanner scanner=new Scanner(System.in);
-        String s;
+        String string;
         //#号结束输入，输入的字符间要有空格，方便处理
-        while (!(s=scanner.next()).equals("#")) {
-            list.add(s);
+        while (!(string=scanner.next()).equals("#")) {
+            list.add(string);
         }
         scanner.close();
         return transferToPostfix(list);
@@ -77,7 +77,7 @@ public class PostFix {
                 iterator.remove();
             }
         }
-        System.out.println("后缀： "+sb);
+        System.out.println("后缀表达式为： "+sb);
         return calculate();
         //Collections.reverse(output);
     }
