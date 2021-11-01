@@ -40,7 +40,7 @@ public class checkAnswer {
 
         }*/
 
-        System.out.println(String.format("你输入的4个1-10的整数为%s,%s,%s,%s",array[0],array[1],array[2],array[3]));
+        System.out.println(String.format("你输入的4个1-10的整数为： %s,%s,%s,%s",array[0],array[1],array[2],array[3]));
 //        System.out.println("结果如下：");
 
         List<double[]> resultAllList = new ArrayList<>();

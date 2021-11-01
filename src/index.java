@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class index {
     static int result = 0;//获取表达式结果
-    static int timer = 30;
+    static int timer = 30;//计时器（难度系数默认为30秒）
     static int grade = 0;//单轮分数
     static boolean isExit = true;//游戏循环条件
 
-    public static void entrance(){
+    public static void entrance() {
 
-//        while (isExit) {
+        while (isExit) {
         //isExit为false时退出游戏
 
         baseInfo.getUsername();//获取用户名
@@ -37,22 +37,28 @@ public class index {
                     //游戏结束
                     System.out.println("输入表达式不正确，游戏结束");
                 }
-            }}
-        else{
-                //无解，读入NO
-                Scanner sc = new Scanner(System.in);
-                if (sc.hasNextLine()) {
-                    String str = sc.nextLine();
+            }
+        } else {
+            //无解，读入NO
+            long startTime = System.currentTimeMillis();
+            Scanner sc = new Scanner(System.in);
+            if (sc.hasNextLine()) {
+                String str = sc.nextLine();
+                long endTime = System.currentTimeMillis();
+                long usedTime = (endTime - startTime) / 1000;
 //                String str = getInput();
+                if (usedTime >= 30) {
+                    System.out.println("已超时，游戏结束，不得分");
+                } else {
                     if (str.equals("NO")) {
                         //正常得分，进入下一题
                         System.out.println("进入下一题");
                     } else {
                         System.out.println("判断错误，游戏结束");
                     }
-
                 }
             }
+        }
         /*{
             System.out.println("是否继续游戏？(Y/N)");
             String s = getInput();
@@ -60,10 +66,10 @@ public class index {
                 isExit = false;
         }*/
 
-        }
+    }
 
 
-//    }
+    }
 
     /*public static String getInput() {
         Scanner sc = new Scanner(System.in);
