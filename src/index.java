@@ -5,19 +5,27 @@ public class index {
     static int timer = 30;//计时器（难度系数默认为30秒）
     static int grade = 0;//单轮分数
     static boolean isExit = true;//游戏循环条件
+    static String  finalStr = checkAnswer.getRandom();//获取生成的随机数信息
+
+    public static String returnFinalStr(){
+        if(checkAnswer.check()){
+            finalStr += " 有解";
+        }
+        return finalStr;
+    }
 
     public static void entrance() {
-
-        while (isExit) {
+//        while (isExit) {
         //isExit为false时退出游戏
 
-        baseInfo.getUsername();//获取用户名
+//        baseInfo.getUsername();//获取用户名
 //        baseInfo.createRandom();
-        checkAnswer.checkAnswer();//检查所生成的随机数是否有解
+//        finalStr += checkAnswer.getRandom();//检查所生成的随机数是否有解
 
-        if (checkAnswer.isFlag) {
+        if (checkAnswer.check()) {
             //有解，进行后续计算
             System.out.println("有解");
+//            finalStr+="有解";
             long startTime = System.currentTimeMillis();
             result = baseInfo.calResult();
             long endTime = System.currentTimeMillis();
@@ -80,7 +88,7 @@ public class index {
         return "";
 
     }*/
-}
+//}
 
 
 

@@ -5,15 +5,17 @@ public class baseInfo {
     static String username = null;//用户名
     static int result=0;//用于判断表达式结果是否为24
 
-    public static void getUsername(){
+    public static void getUsername(String str){
         //读取用户名
-        System.out.println("请输入玩家名称：");
+        /*System.out.println("请输入玩家名称：");
         Scanner sc = new Scanner(System.in);
         if (sc.hasNextLine()) {
             String str1 = sc.nextLine();
             username = str1;
             System.out.println(username);
-        }
+        }*/
+        username = str;
+
     }
 
     public static void createRandom(){

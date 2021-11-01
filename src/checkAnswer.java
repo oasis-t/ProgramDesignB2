@@ -4,6 +4,7 @@ import java.util.*;
 
 public class checkAnswer {
     static boolean isFlag = false;
+    static double[] array = baseInfo.arr;
 
     /**
      * 计算24点中可以到的操作
@@ -12,12 +13,37 @@ public class checkAnswer {
             "+", "-", "*", "/"
     };
 
-    public static boolean checkAnswer() {
+    public static boolean check(){
+        List<double[]> resultAllList = new ArrayList<>();
+        List<double[]> list = new ArrayList<>();
+        list.add(array);
+        list.add(new double[]{array[1], array[2], array[3], array[0]});
+        list.add(new double[]{array[2], array[3], array[0], array[1]});
+        list.add(new double[]{array[3], array[0], array[1], array[2]});
+        for (int i = 0; i < list.size(); i++) {
+            getAllArray(resultAllList, Arrays.copyOf(list.get(i), list.get(i).length));
+        }
 
+        int sum = 0;
+        Iterator<double[]> iterator = resultAllList.iterator();
+        while (iterator.hasNext()) {
+            double[] tempArray = iterator.next();
+            sum += calculate24Point(tempArray);
+            sum += calculate24Point2(tempArray);
+        }
+
+
+        System.out.println("总共方案数量：" + sum);
+        if(sum!= 0){
+            isFlag = true;
+        }
+        return isFlag;
+    }
+    public static String getRandom() {
+        String midStr = "";//用于展示在JTextArea
 
 //        double[] array = new double[4];
         baseInfo.createRandom();
-        double[] array = baseInfo.arr;
         /*int index=0;
         Scanner scanner=new Scanner(System.in);
         while (index<4)
@@ -39,33 +65,13 @@ public class checkAnswer {
             array[index++]=tmpNum;
 
         }*/
+        midStr = "生成的4个1-10的整数为："+array[0]+","+array[1]+","+array[2]+","+array[3];
+        return midStr;
 
-        System.out.println(String.format("你输入的4个1-10的整数为： %s,%s,%s,%s",array[0],array[1],array[2],array[3]));
+//        System.out.println(String.format("生成的4个1-10的整数为： %s,%s,%s,%s",array[0],array[1],array[2],array[3]));
 //        System.out.println("结果如下：");
 
-        List<double[]> resultAllList = new ArrayList<>();
-        List<double[]> list = new ArrayList<>();
-        list.add(array);
-        list.add(new double[]{array[1], array[2], array[3], array[0]});
-        list.add(new double[]{array[2], array[3], array[0], array[1]});
-        list.add(new double[]{array[3], array[0], array[1], array[2]});
-        for (int i = 0; i < list.size(); i++) {
-            getAllArray(resultAllList, Arrays.copyOf(list.get(i), list.get(i).length));
-        }
 
-        int sum = 0;
-        Iterator<double[]> iterator = resultAllList.iterator();
-        while (iterator.hasNext()) {
-            double[] tempArray = iterator.next();
-            sum += calculate24Point(tempArray);
-            sum += calculate24Point2(tempArray);
-        }
-
-        System.out.println("总共方案数量：" + sum);
-        if(sum!= 0){
-            isFlag = true;
-        }
-        return isFlag;
     }
 
 
