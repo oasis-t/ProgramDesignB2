@@ -8,7 +8,7 @@ public class index {
 
     public static void entrance() {
 
-        while (isExit) {
+//        while (isExit) {
         //isExit为false时退出游戏
 
         baseInfo.getUsername();//获取用户名
@@ -33,6 +33,7 @@ public class index {
 
                     }*/
                     System.out.println("得分为：" + grade);
+                    gradeRecord.output(grade);
                 } else {
                     //游戏结束
                     System.out.println("输入表达式不正确，游戏结束");
@@ -69,7 +70,7 @@ public class index {
     }
 
 
-    }
+//    }
 
     /*public static String getInput() {
         Scanner sc = new Scanner(System.in);
