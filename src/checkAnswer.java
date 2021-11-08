@@ -15,33 +15,11 @@ public class checkAnswer {
     public static boolean checkAnswer() {
 
 
-//        double[] array = new double[4];
         baseInfo.createRandom();
         double[] array = baseInfo.arr;
-        /*int index=0;
-        Scanner scanner=new Scanner(System.in);
-        while (index<4)
-        {
-            System.out.println(String.format("请输入第%s个1-10的整数",index+1));
-            String tempNumStr=scanner.nextLine();
-            if(!StringUtils.isNumeric(tempNumStr))
-            {
-                System.out.println("你输入的不是一个整数");
-                continue;
-            }
-            double tmpNum=Double.valueOf(tempNumStr);
-            if (tmpNum<0 || tmpNum>10)
-            {
-                System.out.println("你输入的数字不是1-10的数字");
-                continue;
-            }
 
-            array[index++]=tmpNum;
-
-        }*/
-
-        System.out.println(String.format("你输入的4个1-10的整数为： %s,%s,%s,%s",array[0],array[1],array[2],array[3]));
-//        System.out.println("结果如下：");
+        System.out.println(String.format("你输入的4个1-10的整数为： %s,%s,%s,%s",
+                                        array[0],array[1],array[2],array[3]));
 
         List<double[]> resultAllList = new ArrayList<>();
         List<double[]> list = new ArrayList<>();
@@ -114,7 +92,8 @@ public class checkAnswer {
         Iterator<double[]> iterator = list.iterator();
         while (iterator.hasNext()) {
             double[] tmpArray = iterator.next();
-            if (tmpArray[0] == array[0] && tmpArray[1] == array[1] && tmpArray[2] == array[2] && tmpArray[3] == array[3]) {
+            if (tmpArray[0] == array[0] && tmpArray[1] == array[1] &&
+                    tmpArray[2] == array[2] && tmpArray[3] == array[3]) {
                 return true;
             }
         }
@@ -127,10 +106,6 @@ public class checkAnswer {
      */
     public static int calculate24Point(double[] array)  {
         int count = 0;
-        /*if (array.length != 4) {
-            throw new Exception("不是四个数");
-        }*/
-
 
         for (String op : operators) {
             String expressionStr = "";
@@ -148,15 +123,16 @@ public class checkAnswer {
                 {
                     continue;
                 }
-                String expressionStr2 = String.format("(%s %s %s)", expressionStr, op2, array[2]);
+                String expressionStr2 = String.format("(%s %s %s)",
+                                    expressionStr, op2, array[2]);
                 for (String op3 : operators) {
 
                     double result2 = getTwoNumCaculate(result1, array[3], op3);
-                    String expressionStr3 = String.format("%s %s %s", expressionStr2, op3, array[3]);
+                    String expressionStr3 = String.format("%s %s %s",
+                                        expressionStr2, op3, array[3]);
 
                     if (result2 == 24.0d) {
                         count++;
-//                        System.out.println(String.format("方案：%s=%s", expressionStr3, result2));
                     }
                 }
             }
@@ -170,9 +146,6 @@ public class checkAnswer {
      */
     public static int calculate24Point2(double[] array)  {
         int count = 0;
-        /*if (array.length != 4) {
-            throw new Exception("不是四个数");
-        }*/
         for (String op : operators) {
             double result1 = getTwoNumCaculate(array[0], array[1], op);
             if (!isValidResult(result1))
@@ -189,10 +162,10 @@ public class checkAnswer {
                 String expressionStr2 = String.format("(%s %s %s)", array[2], op2, array[3]);
                 for (String op3 : operators) {
                     double result3 = getTwoNumCaculate(result1, result2, op3);
-                    String expressionStr3 = String.format("%s %s %s", expressionStr1, op3, expressionStr2);
+                    String expressionStr3 = String.format("%s %s %s",
+                                        expressionStr1, op3, expressionStr2);
                     if (result3 == 24.0d) {
                         count++;
-//                        System.out.println(String.format("方案： %s = %s", expressionStr3, result3));
                     }
                 }
             }
@@ -224,7 +197,6 @@ public class checkAnswer {
             case "/":
                 return num1 / num2;
             default:
-//                throw new Exception("运算符不符合规范");
                 System.out.println("运算符不符合规范");
                 return 0;
         }

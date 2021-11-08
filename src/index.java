@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class index {
     static int result = 0;//获取表达式结果
-    static int timer = 30;//计时器（难度系数默认为30秒）
+    static int timer = 60;//计时器（难度系数默认为60秒）
     static int grade = 0;//单轮分数
     static boolean isExit = true;//游戏循环条件
 
@@ -23,7 +23,7 @@ public class index {
             long endTime = System.currentTimeMillis();
             long usedTime = (endTime - startTime) / 1000;
             System.out.println(result);
-            if (usedTime >= 30) {
+            if (usedTime >= timer) {
                 System.out.println("已超时，游戏结束，不得分");
             } else {
                 if (result == 24) {
@@ -47,8 +47,7 @@ public class index {
                 String str = sc.nextLine();
                 long endTime = System.currentTimeMillis();
                 long usedTime = (endTime - startTime) / 1000;
-//                String str = getInput();
-                if (usedTime >= 30) {
+                if (usedTime >= timer) {
                     System.out.println("已超时，游戏结束，不得分");
                 } else {
                     if (str.equals("NO")) {
